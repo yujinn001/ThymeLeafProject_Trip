@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+   <div class="wrapper row3">
+     <main class="container clear"> 
+       <!-- main body --> 
+       <!-- ################################################################################################ -->
+       <div class="content"> 
+         <!-- ################################################################################################ -->
+         <div id="gallery">
+           <figure>
+             <header class="heading" >
+             
+               <form method="post" action="/location/location_find" class="inline" >
+                <div class="button1" style="padding-left:380px" >
+                	<input type=text name=addr size=20 class="input-sm" style="height:40px" >
+                	<button style="height: 40px;background-color: #0055ff;border: none;color:white"> <b>검색</b></button>
+                	<!-- <input type=submit value="검색" class="btn btn-sm" style="background-color: #B9E0FD"> -->
+                </div>
+               </form>
+             </header>
+             <div style="height:20px"></div>
+             <ul class="nospace clear">
+               <li th:each="vo,i:${list}" th:class="${i.index%4==0}?'one_quarter first':'one_quarter'"><a th:href="@{/location/location_detail(no=${vo.no})}"><img th:src="${vo.poster}" th:title="${vo.title}"></a></li>
+             </ul>
+             <figcaption></figcaption>
+           </figure>
+         </div>
+         <!-- ################################################################################################ --> 
+         <!-- ################################################################################################ -->
+         <nav class="pagination">
+           <ul>
+             <li th:if="${startPage>1}"><a th:href="@{/location/location_find(page=${startPage-1},addr=${addr})}">&laquo; Previous</a></li>
+             <li th:class="${curpage == i}?'current':''" th:each="i:${#numbers.sequence(startPage,endPage)}"><a th:href="@{/location/location_find(page=${i},addr=${addr})}"  th:text="${i}"></a></li>
+             <li th:if="${endPage<totalpage}"><a th:href="@{/location/location_find(page=${endPage+1},addr=${addr})}">Next &raquo;</a></li>
+           </ul>
+         </nav>
+         <!-- ################################################################################################ --> 
+       </div>
+       <!-- ################################################################################################ --> 
+       <!-- / main body -->
+       <div class="clear"></div>
+     </main>
+   </div>
+</body>
+</html>

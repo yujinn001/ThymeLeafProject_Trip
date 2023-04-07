@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="wrapper row3">
+  <main class="container clear">
+   <table class="table">
+    <tr>
+     <td >
+      <img th:src="${vo.poster}" style="width:100%;height: 350px;">
+     </td>
+    </tr>
+   </table>
+   <div style="height: 10px"></div>
+   <table class="table">
+    <tr>
+      <td width=20% class="text-center" colspan="2">
+      	<h3 th:text="${vo.title}" ></h3>&nbsp;
+      	<sub style="color:blue;font-size: 10px" th:text="${vo.content}"></sub>
+      </td>
+    </tr>
+    <tr>
+     <th width=20% class="text-center">주소</th>
+     <td width=80% th:text="${vo.addr}"></td>
+    </tr>
+    <tr>
+     <th width=20% class="text-center">가격</th>
+     <td width=80% th:text="${vo.price}"></td>
+    </tr>
+    <tr>
+     <td colspan="2" class="text-right">
+      <input type="button" class="btn btn-sm " style="background-color: #0055FF" value="목록" 
+              onclick="javascript:history.back()">
+     </td>
+    </tr>
+   </table>
+  </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="wrapper row3">
+  <main class="container clear">
+    <div class="jumbotron">
+     <h2 class="text-center">Jeju Hotel 둘러보기</h2>
+    </div>
+    <div class="row">
+     <table class="table">
+      <tr>
+       <td>
+      
+        <table class="table" th:each="vo:${list}"  >
+          <tr>
+           <td class="text-center" width="30%" rowspan="4"><!-- hotel/hotel_detail -->
+           <a th:href="@{/hotel/hotel_detail_before(hno=${vo.hno})}">
+             <img th:src="${vo.hotel_image}" style="width:400px;height: 150px" class="img-rounded">
+           </a>
+           </td>  <!-- hotel/hotel_detail_before -->
+           <td width=70%><a th:href="@{/hotel/hotel_detail_before(hno=${vo.hno})}"><span th:text="${vo.name}"></span></a>&nbsp;<span style="color:orange" th:text="${vo.star}"></span></td>
+          </tr>
+          <tr>
+           <td width="70%" th:text="${vo.grade}"></td>
+          </tr>
+          <tr>
+           <td width="70%" th:text="${vo.addr}"></td>
+          </tr>
+          <tr>
+           <td width="70%" th:text="${vo.time}"></td>
+          </tr>
+        </table>
+       </td>
+      </tr>
+      <tfoot>
+      <td colspan="5" class="text-center">
+       <a th:href="@{/hotel/hotel_list(page=${curpage>1?curpage-1:curpage})}" class="btn btn-sm" style="background-color: #0055FF">이전</a>
+       <span th:text="${curpage}"></span>page/<span th:text="${totalpage}"></span> pages
+       <a th:href="@{/hotel/hotel_list(page=${curpage<totalpage?curpage+1:curpage})}" class="btn btn-sm" style="background-color: #0055FF">다음</a>
+      </td>
+    </tfoot>
+     </table>
+    </div>
+  </main>
+</div>
+</body>
+</html>

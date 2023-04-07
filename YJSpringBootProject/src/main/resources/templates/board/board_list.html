@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="wrapper row3">
+  <main class="container clear"> 
+   <table class="table">
+    <tr>
+     <td><a href="/board/board_insert" class="btn btn-sm" style="background-color: #B9E0FD">새글</a></td>
+    </tr>
+   </table>
+   <table class="table">
+    <thead>
+     <tr>
+      <th class="text-center" width="10%">번호</th>
+      <th class="text-center" width="45%">제목</th>
+      <th class="text-center" width="15%">이름</th>
+      <th class="text-center" width="20%">작성일</th>
+      <th class="text-center" width="10%">조회수</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr th:each="vo:${list}">
+      <td class="text-center" width="10%" th:text="${vo.no}"></td>
+      <td width="45%"><a th:href="@{/board/board_detail(no=${vo.no})}" th:text="${vo.subject}"></a></td>
+      <td class="text-center" width="15%" th:text="${vo.name}"></td>
+      <td class="text-center" width="20%" th:text="${vo.regdate}"></td>
+      <td class="text-center" width="10%" th:text="${vo.hit}"></td>
+     </tr>
+    </tbody>
+    <tfoot>
+      <td colspan="5" class="text-center">
+       <a th:href="@{/board/board_list(page=${curpage>1?curpage-1:curpage})}" class="btn btn-sm" style="background-color: #B9E0FD">이전</a>
+       <span th:text="${curpage}"></span>page/<span th:text="${totalpage}"></span> pages
+       <a th:href="@{/board/board_list(page=${curpage<totalpage?curpage+1:curpage})}" class="btn btn-sm" style="background-color: #B9E0FD">다음</a>
+      </td>
+    </tfoot>
+   </table>
+  </main>
+</div>
+</body>
+</html>

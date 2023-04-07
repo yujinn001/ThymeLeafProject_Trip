@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="wrapper row3">
+  <main class="container clear">
+    <div class="jumbotron">
+     <h2 class="text-center" >Best Hotel</h2>
+    </div>
+    <div class="row">
+     <table class="table">
+      <tr>
+       <td>
+       <h5 style="font-size: 40px">&nbsp;5성급</h5>
+        <table class="table" th:each="vo:${list}"  th:if="${vo.grade=='5성급'}">
+          <tr>
+           <td class="text-center" width="30%" rowspan="4">
+           <a th:href="@{/hotel/hotel_detail(hno=${vo.hno})}">
+             <img th:src="${vo.hotel_image}" style="width:400px;height: 150px" class="img-rounded">
+           </a>
+           </td>
+           <td width=70%><a th:href="@{/hotel/hotel_detail(hno=${vo.hno})}"><span th:text="${vo.name}"></span></a>&nbsp;<span style="color:orange" th:text="${vo.star}"></span></td>
+          </tr>
+          <tr>
+           <td width="70%" th:text="${vo.grade}"></td>
+          </tr>
+          <tr>
+           <td width="70%" th:text="${vo.addr}"></td>
+          </tr>
+          <tr>
+           <td width="70%" th:text="${vo.time}"></td>
+          </tr>
+        </table>
+       </td>
+      </tr>
+     </table>
+    </div>
+  </main>
+</div>
+</body>
+</html>
